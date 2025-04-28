@@ -21,8 +21,6 @@ declare module 'vue-router/auto-routes' {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
     '//audio/': RouteRecordInfo<'//audio/', '/audio', Record<never, never>, Record<never, never>>,
     '//audio/generate': RouteRecordInfo<'//audio/generate', '/audio/generate', Record<never, never>, Record<never, never>>,
-    '//audio/generate-embedded': RouteRecordInfo<'//audio/generate-embedded', '/audio/generate-embedded', Record<never, never>, Record<never, never>>,
-    '//audio/select-embedded': RouteRecordInfo<'//audio/select-embedded', '/audio/select-embedded', Record<never, never>, Record<never, never>>,
     '//avatar': RouteRecordInfo<'//avatar', '/avatar', Record<never, never>, Record<never, never>>,
     '//duration-code': RouteRecordInfo<'//duration-code', '/duration-code', Record<never, never>, Record<never, never>>,
     '//editor/blueprint': RouteRecordInfo<'//editor/blueprint', '/editor/blueprint', Record<never, never>, Record<never, never>>,

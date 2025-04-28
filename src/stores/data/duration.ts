@@ -35,7 +35,7 @@ export const useDurationStore = defineStore("data-duration", () => {
             const durationCodeStore = useDurationCodeStore();
 
             durationCodeStore.load();
-          } catch (e) {
+          } catch (e: any) {
             ElNotification({
               title: "提示",
               message: `${e.response.data.message}(code:${e.response.data.code})`,
@@ -61,7 +61,7 @@ export const useDurationCodeStore = defineStore("data-duration-code", () => {
 
     DurationCodeApi.generate(duration.value).then(() => load());
   };
-  const removeCode = async (id) => {
+  const removeCode = async (id: string) => {
     await DurationCodeApi.del(id);
 
     load();
@@ -70,7 +70,7 @@ export const useDurationCodeStore = defineStore("data-duration-code", () => {
   const load = async () => {
     const res = (await DurationCodeApi.list()) as any;
 
-    items.value = res.filter((item) => item.isValid == 0 || used.value);
+    items.value = res.filter((item: any) => item.isValid == 0 || used.value);
   };
 
   return { dialog, items, used, duration, generateCode, removeCode, load };

@@ -1,5 +1,5 @@
 <template>
-  <spacegt-login :proxy="proxy" @login="onLogin">
+  <spacegt-login :proxy="proxy" locale="zhHans"  @login="onLogin">
   </spacegt-login>
 </template>
 

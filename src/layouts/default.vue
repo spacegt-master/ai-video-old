@@ -74,7 +74,7 @@
 					<v-list-item-title>我的微课</v-list-item-title>
 				</v-list-item>
 
-				<v-list-item to="/duration-code">
+				<v-list-item to="/duration-code" v-if="hasAuthority('ROLE_ADMIN')">
 					<template v-slot:prepend>
 						<v-icon>
 							<Ticket />
@@ -115,6 +115,7 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { useDurationStore } from '@/stores/data/duration'
+import { hasAuthority } from '@/stores/data/accounts'
 
 const durationStore = useDurationStore()
 const isCollapse = ref(false)

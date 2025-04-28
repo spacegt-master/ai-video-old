@@ -114,8 +114,7 @@ const updateAvatarLocation = (x, y, w, h) => {
 		if (w && h) {
 			mapsStore.currentMapAvatarLocation.width = w / mapsStore.currentMapLocation.scale;
 			mapsStore.currentMapAvatarLocation.height = h / mapsStore.currentMapLocation.scale;
-			mapsStore.currentMapAvatarLocation.scale =
-				mapsStore.precision(mapsStore.currentMapAvatarLocation.width * mapsStore.currentMapLocation.scale / mapsStore.currentMapAvatarLocation.original_width);
+			mapsStore.currentMapAvatarLocation.scale = mapsStore.precision(mapsStore.currentMapAvatarLocation.width / mapsStore.currentMapAvatarLocation.original_width);
 		}
 
 		mapsStore.currentMapAvatarLocation.x = x / mapsStore.currentMapLocation.scale;

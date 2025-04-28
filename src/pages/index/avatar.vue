@@ -10,7 +10,7 @@
 			<v-col v-for="(item, i) in items" :key="i" cols="12">
 				<v-hover v-slot="{ isHovering, props: hoverProps }">
 					<v-card class="mx-auto" flat link :ripple="false" rounded="lg" v-bind="hoverProps"
-						@click="mapsStore.setCurrentMapAvatar(item)">
+						@click="onSelectedAvatar(item)">
 						<v-img :aspect-ratio="4 / 5" block cover :src="item.uri" />
 
 						<v-overlay class="align-center justify-center" contained :model-value="isHovering" persistent
@@ -22,6 +22,33 @@
 				<p class="font-weight-bold text-body-1"> {{ item.name }}</p>
 			</v-col>
 		</v-row>
+
+		<v-dialog v-model="selectedPromptDrawer" contained max-width="500">
+			<v-card rounded="lg" title="更换形象">
+				<template #prepend>
+					<v-avatar color="info" icon="mdi-account-arrow-left-outline" variant="tonal" />
+				</template>
+
+				<template #text>
+					<div class="mb-4 text-body-2 text-medium-emphasis">
+						是否更换新的形象。
+					</div>
+
+				</template>
+
+				<v-divider />
+
+				<v-card-actions class="bg-surface-light">
+					<v-spacer />
+
+					<v-btn border class="text-none" color="surface" text="取消" variant="flat"
+						@click="selectedPromptDrawer = false" />
+
+					<v-btn class="text-none" color="info" text="确定" variant="flat"
+						@click="onSelectedAvatarConfirm" />
+				</v-card-actions>
+			</v-card>
+		</v-dialog>
 	</v-container>
 
 	<v-container v-else class="pa-6 pa-md-12" max-width="1600px" fluid>
@@ -52,6 +79,7 @@
 				<p class="font-weight-bold text-body-1"> {{ item.name }}</p>
 			</v-col>
 		</v-row>
+
 	</v-container>
 </template>
 
@@ -72,6 +100,28 @@ const props = defineProps({
 	}
 })
 const items = ref([])
+
+const selectedItem = ref()
+
+const selectedPromptDrawer = ref(false)
+
+const onSelectedAvatar = (item) => {
+	if (mapsStore.currentMapAvatar != null) {
+		selectedPromptDrawer.value = true
+
+		selectedItem.value = item
+	} else {
+		mapsStore.setCurrentMapAvatar(item)
+	}
+}
+
+const onSelectedAvatarConfirm = () => {
+	mapsStore.setCurrentMapAvatar()
+
+	mapsStore.setCurrentMapAvatar(selectedItem.value)
+
+	selectedPromptDrawer.value = false
+}
 
 const loadAvatars = async () => {
 	items.value = await list(accountsStore.account.id)

@@ -42,8 +42,8 @@ importers:
         specifier: '*'
         version: 0.10.0
       spacegt:
-        specifier: ^0.1.10
-        version: 0.1.10(typescript@5.8.3)(vite-plugin-vuetify@2.1.1)
+        specifier: ^0.1.15
+        version: 0.1.15(typescript@5.8.3)(vite-plugin-vuetify@2.1.1)
       uuid:
         specifier: ^11.1.0
         version: 11.1.0
@@ -1745,8 +1745,8 @@ packages:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
 
-  spacegt@0.1.10:
-    resolution: {integrity: sha512-0HZzu+0TqIDekuildPieOqYLNtV7BBoA3KGqAMvbmO7+tFXar8tFRUU1/932gBpiuZUZ3e533w4qcafR7AWG0w==}
+  spacegt@0.1.15:
+    resolution: {integrity: sha512-PyHmv1RIhLJ7+Ah5Ckqy6njxjipohzqvmFwH6Rn9CY/ni/0OKKQFk/DPxB+g5N2LXP31p29CHtI13NfqJgBLhg==}
 
   speakingurl@14.0.1:
     resolution: {integrity: sha512-1POYv7uv2gXoyGFpBCmpDVSNV74IfsWlDW216UPjbWufNf+bSU6GdbDsxdcxtfwb4xlI3yxzOTKClUosxARYrQ==}
@@ -1814,6 +1814,10 @@ packages:
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
+
+  type-fest@4.40.0:
+    resolution: {integrity: sha512-ABHZ2/tS2JkvH1PEjxFDTUWC8dB5OsIGZP4IFLhR293GqT5Y5qB1WwL2kMPYhQW9DVgVD8Hd7I8gjwPIf5GFkw==}
+    engines: {node: '>=16'}
 
   type@2.7.3:
     resolution: {integrity: sha512-8j+1QmAbPvLZow5Qpi6NCaN8FB60p/6x8/vfNqOk/hC+HuvFZhL4+WfekuhQLiqFZXOgQdrs3B+XxEmCc6b3FQ==}
@@ -1909,6 +1913,11 @@ packages:
 
   varint@6.0.0:
     resolution: {integrity: sha512-cXEIW6cfr15lFv563k4GuVuW/fiwjknytD37jIOLSdSWuOI6WnO/oKwmP2FQTU2l01LP8/M5TSAJpzUaGe3uWg==}
+
+  vee-validate@4.15.0:
+    resolution: {integrity: sha512-PGJh1QCFwCBjbHu5aN6vB8macYVWrajbDvgo1Y/8fz9n/RVIkLmZCJDpUgu7+mUmCOPMxeyq7vXUOhbwAqdXcA==}
+    peerDependencies:
+      vue: ^3.4.26
 
   vite-plugin-vuetify@2.1.1:
     resolution: {integrity: sha512-Pb7bKhQH8qPMzURmEGq2aIqCJkruFNsyf1NcrrtnjsOIkqJPMcBbiP0oJoO8/uAmyB5W/1JTbbUEsyXdMM0QHQ==}
@@ -3687,14 +3696,16 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
-  spacegt@0.1.10(typescript@5.8.3)(vite-plugin-vuetify@2.1.1):
+  spacegt@0.1.15(typescript@5.8.3)(vite-plugin-vuetify@2.1.1):
     dependencies:
       '@mdi/font': 7.4.47
+      '@vueuse/core': 13.1.0(vue@3.5.13(typescript@5.8.3))
       axios: 1.8.4
       core-js: 3.41.0
       pinia: 3.0.2(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))
       pinia-plugin-persistedstate: 4.2.0(pinia@3.0.2(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3)))
       roboto-fontface: 0.10.0
+      vee-validate: 4.15.0(vue@3.5.13(typescript@5.8.3))
       vue: 3.5.13(typescript@5.8.3)
       vuetify: 3.8.1(typescript@5.8.3)(vite-plugin-vuetify@2.1.1)(vue@3.5.13(typescript@5.8.3))
     transitivePeerDependencies:
@@ -3760,6 +3771,8 @@ snapshots:
   type-check@0.4.0:
     dependencies:
       prelude-ls: 1.2.1
+
+  type-fest@4.40.0: {}
 
   type@2.7.3: {}
 
@@ -3887,6 +3900,12 @@ snapshots:
   uuid@11.1.0: {}
 
   varint@6.0.0: {}
+
+  vee-validate@4.15.0(vue@3.5.13(typescript@5.8.3)):
+    dependencies:
+      '@vue/devtools-api': 7.7.2
+      type-fest: 4.40.0
+      vue: 3.5.13(typescript@5.8.3)
 
   vite-plugin-vuetify@2.1.1(vite@6.2.6(@types/node@22.14.0)(jiti@2.4.2)(sass-embedded@1.86.3)(sugarss@4.0.1(postcss@8.5.3))(yaml@2.7.1))(vue@3.5.13(typescript@5.8.3))(vuetify@3.8.1):
     dependencies:

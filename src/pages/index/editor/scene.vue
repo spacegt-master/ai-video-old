@@ -1,9 +1,9 @@
 <template>
 	<v-container class="pa-0 w-100 h-100 overflow-hidden position-absolute pt-14 top-0">
 		<v-file-upload v-model="file" density="compact" icon="" width="100%" height="80px"
-			accept=".pptx,.ppt,.mp4,.jpg,.png" @update:model-value="onUploadFile">
+			accept=".pptx,.ppt,.jpg,.png" @update:model-value="onUploadFile">
 			<template #title>
-				<p class="text-button">导入（图片/PPT/视频）</p>
+				<p class="text-button">导入（图片 / PPT）</p>
 			</template>
 			<template #item></template>
 		</v-file-upload>
@@ -16,7 +16,6 @@
 							<div ref="sceneRef" :key="item.id" class="h-100 w-100 border-lg border-opacity-50 "
 								:class="mapsStore.currentIndex == index ? 'border-info' : 'border-surface'"
 								@click="mapsStore.setCurrentIndex(index)">
-
 								<video v-if="item.bgUri.includes('mp4')">
 									<source :src="item.bgUri" type="video/mp4">
 									<source :src="item.bgUri" type="video/ogg">

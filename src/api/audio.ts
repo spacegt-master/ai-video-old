@@ -6,7 +6,7 @@ export const AudioApi = {
       url: "/api/audio/list",
     });
   },
-  save(name, duration, uri, config) {
+  save(name: string, duration: number, uri: string, config: string) {
     return request({
       url: "/api/audio/save",
       method: "post",
@@ -16,7 +16,7 @@ export const AudioApi = {
       data: { name, duration, uri, config },
     });
   },
-  del(id) {
+  del(id: string) {
     return request({
       url: `/api/audio/del/${id}`,
       method: "post",
@@ -25,7 +25,7 @@ export const AudioApi = {
       },
     });
   },
-  rename(id, name) {
+  rename(id: string, name: string) {
     return request({
       url: `/api/audio/rename/${id}/${name}`,
       method: "post",
@@ -34,7 +34,7 @@ export const AudioApi = {
       },
     });
   },
-  tts({ pitch, voice, speed, volume, text }) {
+  tts({ pitch, voice, speed, volume, text }: any) {
     return request({
       url: "/api/4utech/tts",
       method: "post",

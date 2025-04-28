@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 import { v4 as uuidv4 } from "uuid";
 
-const { isSupported, permissionGranted, show } = useWebNotification();
+const { show } = useWebNotification();
 
 export interface Map {
   id: string;
@@ -19,6 +19,7 @@ export interface MapLocation {
   original_height: number;
   width: number;
   height: number;
+  // 缩放比例不会影响后端人物形象合成，仅影响前端显示的缩放。
   scale: number;
 }
 
@@ -46,6 +47,7 @@ export interface AvatarLocation {
   height: number;
   x: number;
   y: number;
+  // 人物形象在背景中的缩放，影响后端合成 （scale = width / original_width）, 不涉及前端功能。
   scale: number;
 }
 
@@ -108,8 +110,13 @@ const setCurrentMapAudio = (data: Audio) => {
   if (currentMap.value) currentMap.value.audio = data;
 };
 
-const setCurrentMapAvatar = async (data: Avatar) => {
+const setCurrentMapAvatar = async (data: Avatar | null) => {
   if (currentMap.value) {
+    if (data == null) {
+      currentMap.value.avatar = null;
+      return;
+    }
+
     const pictureSize = (await getPictureSize(data.uri)) as any;
 
     currentMap.value.avatar = {
