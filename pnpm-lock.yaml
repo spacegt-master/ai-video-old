@@ -42,8 +42,8 @@ importers:
         specifier: '*'
         version: 0.10.0
       spacegt:
-        specifier: ^0.1.15
-        version: 0.1.15(typescript@5.8.3)(vite-plugin-vuetify@2.1.1)
+        specifier: ^0.1.16
+        version: 0.1.16(typescript@5.8.3)(vite-plugin-vuetify@2.1.1)
       uuid:
         specifier: ^11.1.0
         version: 11.1.0
@@ -1745,8 +1745,8 @@ packages:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
 
-  spacegt@0.1.15:
-    resolution: {integrity: sha512-PyHmv1RIhLJ7+Ah5Ckqy6njxjipohzqvmFwH6Rn9CY/ni/0OKKQFk/DPxB+g5N2LXP31p29CHtI13NfqJgBLhg==}
+  spacegt@0.1.16:
+    resolution: {integrity: sha512-FOiL5EnTAURJUFOULPfDD77Fjz11yBBABPfHuYzx6l6QP2S0kcy95HC6O+eG/nJqyex2xHekTZvjXklEz9bzcQ==}
 
   speakingurl@14.0.1:
     resolution: {integrity: sha512-1POYv7uv2gXoyGFpBCmpDVSNV74IfsWlDW216UPjbWufNf+bSU6GdbDsxdcxtfwb4xlI3yxzOTKClUosxARYrQ==}
@@ -3696,7 +3696,7 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
-  spacegt@0.1.15(typescript@5.8.3)(vite-plugin-vuetify@2.1.1):
+  spacegt@0.1.16(typescript@5.8.3)(vite-plugin-vuetify@2.1.1):
     dependencies:
       '@mdi/font': 7.4.47
       '@vueuse/core': 13.1.0(vue@3.5.13(typescript@5.8.3))
