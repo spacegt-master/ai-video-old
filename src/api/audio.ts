@@ -41,7 +41,15 @@ export const AudioApi = {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-      data: { pitch, voice, speed, volume, text },
+      data: {
+        pitch,
+        voice_name: voice,
+        speed,
+        volume,
+        text,
+        audioType: "wav",
+        supplier_type: 8,
+      },
     });
   },
 };
