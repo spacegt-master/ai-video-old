@@ -29,7 +29,9 @@
 					</v-btn>
 				</div>
 
-				<AccountBtn></AccountBtn>
+				<spacegt-myaccount :sso="ssoProxy" :enabled-settings="false" :account="accountsStore.account"
+					@logout="handleLogout" @login="handleLogin">
+				</spacegt-myaccount>
 			</template>
 		</v-app-bar>
 		<v-navigation-drawer>
@@ -74,7 +76,7 @@
 					<v-list-item-title>我的微课</v-list-item-title>
 				</v-list-item>
 
-				<v-list-item to="/duration-code" v-if="hasAuthority('ROLE_ADMIN')">
+				<v-list-item to="/duration-code" v-if="accountsStore.hasAuthority('ROLE_ADMIN')">
 					<template v-slot:prepend>
 						<v-icon>
 							<Ticket />
@@ -112,16 +114,34 @@
 	</v-app>
 </template>
 
-<script setup>
-import { onMounted, ref } from 'vue'
+<script setup lang="ts">
+import { nextTick, onMounted, ref } from 'vue'
 import { useDurationStore } from '@/stores/data/duration'
-import { hasAuthority } from '@/stores/data/accounts'
+import { useRouter } from 'vue-router'
+import { useAccountsStore, useAuthorizationStore, type Users } from 'spacegt'
 
+const ssoProxy = import.meta.env.VITE_APP_ACCOUNTS_SSO_SERVICE
+
+const accountsStore = useAccountsStore()
+const authorizationStore = useAuthorizationStore()
+const router = useRouter()
 const durationStore = useDurationStore()
 const isCollapse = ref(false)
 
-onMounted(() => durationStore.load())
+const handleLogout = () => {
+	console.log(accountsStore)
+	accountsStore.account = null
+	accountsStore.authorities = []
+	authorizationStore.token = ''
 
+	// nextTick(() => router.push('/login'))
+}
+
+const handleLogin = () => {
+	router.push('/login')
+}
+
+onMounted(() => durationStore.load())
 </script>
 
 <style scoped>

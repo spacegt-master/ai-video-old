@@ -29,7 +29,7 @@
 <script setup>
 import { ref, onMounted, nextTick } from 'vue'
 import { list } from '@/api/avatar.js'
-import {   AudioApi } from '@/api/audio'
+import { AudioApi } from '@/api/audio'
 import { useAudioStore } from '@/stores/data/audio'
 
 const audioStore = useAudioStore()

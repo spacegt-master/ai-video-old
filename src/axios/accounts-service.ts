@@ -1,4 +1,4 @@
-import { useAuthorizationStore } from "@/stores/authorization";
+import { useAuthorizationStore } from "spacegt";
 import { snackbar } from "@/stores/snackbar";
 import axios from "axios";
 

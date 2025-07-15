@@ -4,10 +4,8 @@
 <script setup>
 import 'spacegt/dist/style.css'
 import 'glightbox/dist/css/glightbox.css'
-import { useAuthorizationStore } from '@/stores/authorization'
-import { TokenApi } from '@/api/accounts/token'
+import { useAuthorizationStore, useAccountsStore, TokenApi } from 'spacegt'
 import { onMounted } from 'vue'
-import { useAccountsStore } from '@/stores/data/accounts'
 import { useRouter } from 'vue-router'
 
 const authorizationStore = useAuthorizationStore()

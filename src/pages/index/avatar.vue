@@ -87,7 +87,7 @@
 import GLightbox from 'glightbox';
 import { ref, onMounted } from 'vue'
 import { list } from '@/api/avatar.js'
-import { useAccountsStore } from '@/stores/data/accounts'
+import { useAccountsStore } from 'spacegt'
 import { useMapsStore } from '@/stores/data/maps';
 
 const mapsStore = useMapsStore()
