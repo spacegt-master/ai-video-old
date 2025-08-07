@@ -28,9 +28,9 @@
 
 <script setup>
 import { ref, onMounted, nextTick } from 'vue'
-import { list } from '@/api/avatar.js'
 import { AudioApi } from '@/api/audio'
 import { useAudioStore } from '@/stores/data/audio'
+import { AvatarApi } from '@/api/avatar'
 
 const audioStore = useAudioStore()
 
@@ -55,7 +55,12 @@ const onTTS = async () => {
 		text: text.value,
 	})
 
-	await AudioApi.save(title.value, res.duration, res.audio_url, JSON.stringify({ pitch: pitch.value, voice: selectedVoice.value, speed: speed.value, volume: volume.value, text: text.value, }))
+	await AudioApi.save({
+		name: title.value,
+		duration: res.duration,
+		url: res.audio_url,
+		config: JSON.stringify({ pitch: pitch.value, voice: selectedVoice.value, speed: speed.value, volume: volume.value, text: text.value },),
+	})
 
 	await audioStore.load()
 
@@ -70,7 +75,7 @@ const onTTS = async () => {
 }
 
 const loadVoices = async () => {
-	voices.value = await list()
+	voices.value = (await AvatarApi.list()).filter(item => item.voice)
 
 	if (voices.value?.at(0))
 		selectedVoice.value = voices.value.at(0).voice
@@ -78,6 +83,14 @@ const loadVoices = async () => {
 
 onMounted(() => {
 	loadVoices()
+})
+
+function init(data) {
+	text.value = data.text
+}
+
+defineExpose({
+	init
 })
 </script>
 

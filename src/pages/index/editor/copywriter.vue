@@ -31,8 +31,8 @@
 				</v-btn>
 			</h3>
 		</section>
-
-		<div v-if="mapsStore.currentMapAudio" style="text-align: center;">
+ 
+		<div v-if="mapsStore.currentMapAudio" :key="mapsStore.currentMapAudio.id" style="text-align: center;">
 			<audio class="w-100 my-4" style="display: block;" controls controlsList="nodownload">
 				<source :src="mapsStore.currentMapAudio.uri" />
 			</audio>

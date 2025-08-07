@@ -6,14 +6,14 @@ export const AudioApi = {
       url: "/api/audio/list",
     });
   },
-  save(name: string, duration: number, uri: string, config: string) {
+  save(data: { name: string; duration: number; uri: string; config: string }) {
     return request({
       url: "/api/audio/save",
       method: "post",
       headers: {
         "Content-Type": "multipart/form-data",
       },
-      data: { name, duration, uri, config },
+      data,
     });
   },
   del(id: string) {
@@ -36,7 +36,7 @@ export const AudioApi = {
   },
   tts({ pitch, voice, speed, volume, text }: any) {
     return request({
-      url: "/api/4utech/tts",
+      url: "/api/tts",
       method: "post",
       headers: {
         "Content-Type": "multipart/form-data",

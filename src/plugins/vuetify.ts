@@ -13,6 +13,7 @@ const { en, zhHans } = spacegt.locales;
 
 // Composables
 import { createVuetify } from "vuetify";
+import { VFileUpload } from "vuetify/labs/VFileUpload";
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
@@ -22,5 +23,8 @@ export default createVuetify({
   locale: {
     locale: "en",
     messages: { en, zhHans },
+  },
+  components: {
+    VFileUpload,
   },
 });

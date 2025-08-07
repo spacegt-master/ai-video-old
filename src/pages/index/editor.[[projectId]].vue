@@ -313,9 +313,9 @@ loadProject()
 }
 
 .right .digital-human {
-	height: 100%;
 	height: calc(100% - 80px);
 	flex-grow: revert;
+	overflow-y: auto;	
 }
 
 .right .operate {

@@ -28,7 +28,6 @@
 						兑换时长
 					</v-btn>
 				</div>
-
 				<spacegt-myaccount :sso="ssoProxy" :enabled-settings="false" :account="accountsStore.account"
 					@logout="handleLogout" @login="handleLogin">
 				</spacegt-myaccount>
@@ -115,12 +114,12 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useDurationStore } from '@/stores/data/duration'
 import { useRouter } from 'vue-router'
-import { useAccountsStore, useAuthorizationStore, type Users } from 'spacegt'
+import { useAccountsStore, useAuthorizationStore } from 'spacegt'
 
-const ssoProxy = import.meta.env.VITE_APP_ACCOUNTS_SSO_SERVICE
+const ssoProxy = String(import.meta.env.VITE_APP_ACCOUNTS_SSO_SERVICE)
 
 const accountsStore = useAccountsStore()
 const authorizationStore = useAuthorizationStore()
@@ -130,7 +129,7 @@ const isCollapse = ref(false)
 
 const handleLogout = () => {
 	console.log(accountsStore)
-	accountsStore.account = null
+	accountsStore.account = undefined
 	accountsStore.authorities = []
 	authorizationStore.token = ''
 

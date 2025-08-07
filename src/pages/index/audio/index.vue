@@ -38,14 +38,26 @@
 			<v-col v-if="!component" cols="12" lg="6" xl="4">
 				<v-card title="合成音频">
 					<template #text>
-						<Generate @load="audioStore.load()"></Generate>
+						<Generate ref="generateRef" @load="audioStore.load()"></Generate>
 					</template>
 				</v-card>
 			</v-col>
 		</v-row>
 
 		<v-bottom-sheet content-class="audio-play" inset v-model="sheet">
-			<v-sheet class="pa-2 rounded-pill mb-2">
+			<v-sheet class="pa-4 rounded-lg	 mb-4">
+				<section>
+					<h3 class="text-subtitle-1 font-weight-bold mb-2 d-flex justify-space-between align-center">
+						{{ music.name }}
+
+						<v-btn prepend-icon="mdi-rename" variant="text"
+							@click="generateRef.init({ text: music.text }); sheet = false">编辑文案</v-btn>
+					</h3>
+
+					<div class="text-body-2 text-medium-emphasis mb-4 w-100 w-md-75">
+						{{ music.text }}
+					</div>
+				</section>
 				<audio class="w-100" style="display: block;" controls controlsList="nodownload">
 					<source :src="music.src" />
 				</audio>
@@ -82,7 +94,6 @@
 </template>
 
 <script setup>
-import { VFileUpload } from 'vuetify/labs/VFileUpload'
 import Generate from './generate.vue'
 import { ref, onMounted, nextTick } from 'vue'
 import { AudioApi } from '@/api/audio'
@@ -102,6 +113,7 @@ const props = defineProps({
 	}
 })
 const music = ref()
+const generateRef = ref()
 const audioDialogVisible = ref(false)
 
 const sheet = ref(false)
@@ -120,11 +132,12 @@ const handleDel = async (id) => {
 
 const onUpdateFile = async () => {
 	const e = await upload(file.value, 'ai-video-old/audio')
-	await AudioApi.save(e.name, e.duration, filePath + e.url)
+	await AudioApi.save({ name: e.name, duration: e.duration, uri: filePath + e.url })
 	await audioStore.load()
 	uploadFileDialog.value = false
 }
 const handleOpen = (data) => {
+	console.log(data)
 	if (props.component) {
 		mapsStore.setCurrentMapAudio(data)
 	} else {
@@ -132,7 +145,9 @@ const handleOpen = (data) => {
 		nextTick(() => {
 			sheet.value = true
 			music.value = {
-				src: data.uri
+				name: data.name,
+				src: data.uri,
+				text: data.config ? JSON.parse(data.config).text : ''
 			}
 		})
 	}

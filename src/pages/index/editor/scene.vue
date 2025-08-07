@@ -1,7 +1,12 @@
 <template>
 	<v-container class="pa-0 w-100 h-100 overflow-hidden position-absolute pt-14 top-0">
-		<v-file-upload v-model="file" density="compact" icon="" width="100%" height="80px"
-			accept=".pptx,.ppt,.jpg,.png" @update:model-value="onUploadFile">
+		<spacegt-aippt @export-images="handleExportImages">
+			<template #default="{ props: activatorProps }">
+				<v-btn v-bind="activatorProps" class="mb-4" width="100%" variant="tonal">AI 生成 PPT</v-btn>
+			</template>
+		</spacegt-aippt>
+		<v-file-upload v-model="file" density="compact" icon="" width="100%" height="80px" accept=".pptx,.ppt,.jpg,.png"
+			@update:model-value="onUploadFile">
 			<template #title>
 				<p class="text-button">导入（图片 / PPT）</p>
 			</template>
@@ -59,7 +64,6 @@
 </template>
 
 <script setup>
-import { VFileUpload } from 'vuetify/labs/VFileUpload'
 import { VueDraggable } from 'vue-draggable-plus'
 import { ref, nextTick } from 'vue'
 import { filePath, uploadTo, ppt2imageTo } from '@/api/io.js'
@@ -106,4 +110,46 @@ const onUploadFile = async (file) => {
 }
 
 const onUpdate = () => { }
+
+async function handleExportImages(data) {
+	console.log(data)
+
+	for (let index = 0; index < data.length; index++) {
+		const file = base64ToFile(data[index], 'image.jpg')
+
+		const res = await uploadTo(file, "scene", (e) => {
+			isShow.value = true
+		})
+		mapsStore.addMap({ id: res.id, name: res.name, bgUri: filePath + res.url })
+	}
+
+	isShow.value = false
+	
+	mapsStore.setCurrentIndex(0)
+}
+
+function base64ToFile(base64String, filename) {
+	// First, convert the Base64 string to a Blob
+	const dataURLtoBlob = (dataurl) => {
+		const arr = dataurl.split(',');
+		const mime = arr[0].match(/:(.*?);/)[1];
+		const bstr = atob(arr[arr.length - 1]);
+		let n = bstr.length;
+		const u8arr = new Uint8Array(n);
+
+		while (n--) {
+			u8arr[n] = bstr.charCodeAt(n);
+		}
+		return new Blob([u8arr], {
+			type: mime
+		});
+	};
+
+	const blob = dataURLtoBlob(base64String);
+
+	// Then, create and return a File object from the Blob
+	return new File([blob], filename, {
+		type: blob.type
+	});
+}
 </script>

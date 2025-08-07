@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+  <v-locale-provider locale="zhHans">
+    <router-view />
+  </v-locale-provider>
 </template>
 <script setup>
 import 'spacegt/dist/style.css'
