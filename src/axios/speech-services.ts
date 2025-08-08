@@ -3,7 +3,7 @@ import { snackbar } from "@/stores/snackbar";
 import axios from "axios";
 
 const service = axios.create({
-  baseURL: import.meta.env.VITE_APP_AI_VIDEO_SERVICE,
+  baseURL: import.meta.env.VITE_APP_SPEECH_SERVICES_SERVICE,
   withCredentials: false,
 });
 

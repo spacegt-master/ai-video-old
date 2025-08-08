@@ -1,0 +1,198 @@
+[
+  {
+    "locale": "ar-EG",
+    "label": "阿拉伯语(埃及)"
+  },
+  {
+    "locale": "ar-SA",
+    "label": "阿拉伯语(沙特阿拉伯)"
+  },
+  {
+    "locale": "bg-BG",
+    "label": "保加利亚语(保加利亚)"
+  },
+  {
+    "locale": "ca-ES",
+    "label": "加泰罗尼亚语(西班牙)"
+  },
+  {
+    "locale": "zh-HK",
+    "label": "中文(粤语，繁体)"
+  },
+  {
+    "locale": "zh-CN",
+    "label": "中文(普通话，简体)"
+  },
+  {
+    "locale": "zh-TW",
+    "label": "中文(台湾普通话)"
+  },
+  {
+    "locale": "hr-HR",
+    "label": "克罗地亚语(克罗地亚)"
+  },
+  {
+    "locale": "cs-CZ",
+    "label": "捷克语(捷克)"
+  },
+  {
+    "locale": "da-DK",
+    "label": "丹麦语(丹麦)"
+  },
+  {
+    "locale": "nl-NL",
+    "label": "荷兰语(荷兰)"
+  },
+  {
+    "locale": "en-AU",
+    "label": "英语(澳大利亚)"
+  },
+  {
+    "locale": "en-CA",
+    "label": "英语(加拿大)"
+  },
+  {
+    "locale": "en-IN",
+    "label": "英语(印度)"
+  },
+  {
+    "locale": "en-IE",
+    "label": "英语(爱尔兰)"
+  },
+  {
+    "locale": "en-GB",
+    "label": "英语(英国)"
+  },
+  {
+    "locale": "en-US",
+    "label": "英语(美国)"
+  },
+  {
+    "locale": "fi-FI",
+    "label": "芬兰语(芬兰)"
+  },
+  {
+    "locale": "fr-CA",
+    "label": "法语(加拿大)"
+  },
+  {
+    "locale": "fr-FR",
+    "label": "法语(法国)"
+  },
+  {
+    "locale": "fr-CH",
+    "label": "法语(瑞士)"
+  },
+  {
+    "locale": "de-AT",
+    "label": "德语(奥地利)"
+  },
+  {
+    "locale": "de-DE",
+    "label": "德语(德国)"
+  },
+  {
+    "locale": "de-CH",
+    "label": "德语(瑞士)"
+  },
+  {
+    "locale": "el-GR",
+    "label": "希腊语(希腊)"
+  },
+  {
+    "locale": "he-IL",
+    "label": "希伯来语(以色列)"
+  },
+  {
+    "locale": "hi-IN",
+    "label": "印地语(印度)"
+  },
+  {
+    "locale": "hu-HU",
+    "label": "匈牙利语(匈牙利)"
+  },
+  {
+    "locale": "id-ID",
+    "label": "印度尼西亚语(印度尼西亚)"
+  },
+  {
+    "locale": "it-IT",
+    "label": "意大利语(意大利)"
+  },
+  {
+    "locale": "ja-JP",
+    "label": "日语(日本)"
+  },
+  {
+    "locale": "ko-KR",
+    "label": "韩语(韩国)"
+  },
+  {
+    "locale": "ms-MY",
+    "label": "马来语(马来西亚)"
+  },
+  {
+    "locale": "nb-NO",
+    "label": "书面挪威语(挪威)"
+  },
+  {
+    "locale": "pl-PL",
+    "label": "波兰语(波兰)"
+  },
+  {
+    "locale": "pt-BR",
+    "label": "葡萄牙语(巴西)"
+  },
+  {
+    "locale": "pt-PT",
+    "label": "葡萄牙语(葡萄牙)"
+  },
+  {
+    "locale": "ro-RO",
+    "label": "罗马尼亚语(罗马尼亚)"
+  },
+  {
+    "locale": "ru-RU",
+    "label": "俄语(俄罗斯)"
+  },
+  {
+    "locale": "sk-SK",
+    "label": "斯洛伐克语(斯洛伐克)"
+  },
+  {
+    "locale": "sl-SI",
+    "label": "斯洛文尼亚语(斯洛文尼亚)"
+  },
+  {
+    "locale": "es-MX",
+    "label": "西班牙语(墨西哥)"
+  },
+  {
+    "locale": "es-ES",
+    "label": "西班牙语(西班牙)"
+  },
+  {
+    "locale": "sv-SE",
+    "label": "瑞典语(瑞典)"
+  },
+  {
+    "locale": "ta-IN",
+    "label": "泰米尔语(印度)"
+  },
+  {
+    "locale": "te-IN",
+    "label": "泰卢固语(印度)"
+  },
+  {
+    "locale": "th-TH",
+    "label": "泰语(泰国)"
+  },
+  {
+    "locale": "tr-TR",
+    "label": "土耳其语(Türkiye)"
+  },
+  {
+    "locale": "vi-VN",
+    "label": "越南语(越南)"
+  }
+]

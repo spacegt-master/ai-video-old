@@ -2,6 +2,7 @@
   <v-locale-provider locale="zhHans">
     <router-view />
   </v-locale-provider>
+  <spacegt-snackbar></spacegt-snackbar>
 </template>
 <script setup>
 import 'spacegt/dist/style.css'

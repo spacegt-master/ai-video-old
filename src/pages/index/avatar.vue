@@ -210,18 +210,13 @@ async function onStaticFileSubmit(isActive) {
 	staticLoading.value = true
 
 	const res = await ImagesegApi.segmentBody({ Image: staticFile.value })
-
-	const file = await downloadUrlAsFile(res.Data.ImageURL, 'avatar.png');
-
-	const fileConfig = await FileApi.upload(file, 'ai-video-old/avatar/image')
-
+ 
 	await AvatarApi.save({
 		name: staticName.value,
-		uri: FileApi.filePath + '/' + fileConfig.url,
+		uri: res.url,
 		type: 'image',
-		avatarUrl: FileApi.filePath + '/' + fileConfig.url,
+		avatarUrl: res.url,
 	})
-
 
 	loadAvatars()
 
@@ -238,25 +233,17 @@ async function onDynamicFileSubmit(isActive) {
 	// 获取形象遮罩
 	const maskResponse = await VideosegApi.segmentVideoBody({ Video: dynamicFile.value })
 
-	// 下载临时连接形象
-	const fileName = 'avatar' + dynamicFile.value.name.substring(dynamicFile.value.name.lastIndexOf('.'))
-	const maskFile = await downloadUrlAsFile(maskResponse.VideoUrl, fileName);
-	// 上传到服务器
-	const maskConfig = await FileApi.upload(maskFile, 'ai-video-old/avatar/mask')
-
 	// 处理封面背景
 	const coverFileName = 'cover' + avatarConfig.cover.substring(avatarConfig.cover.lastIndexOf('.'))
 	const coverFile = await downloadUrlAsFile(FileApi.filePath + '/' + avatarConfig.cover, coverFileName);
 	const coverResponse = await ImagesegApi.segmentBody({ Image: coverFile })
-	const coverAfter = await downloadUrlAsFile(coverResponse.Data.ImageURL, 'avatar.png');
-	const coverAfterConfig = await FileApi.upload(coverAfter, 'ai-video-old/avatar')
-
+ 
 	await AvatarApi.save({
 		name: dynamicName.value,
-		uri: FileApi.filePath + '/' + coverAfterConfig.url,
+		uri: coverResponse.url,
 		type: 'video',
 		avatarUrl: FileApi.filePath + '/' + avatarConfig.url,
-		maskUrl: FileApi.filePath + '/' + maskConfig.url
+		maskUrl: maskResponse.url
 	})
 
 

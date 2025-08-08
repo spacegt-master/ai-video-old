@@ -5,7 +5,7 @@
 				<p class="font-weight-bold text-h4 ">
 					我的声音 ({{ audioStore.items.length }})
 				</p>
-				<v-btn class="text-none px-0" color="primary" :ripple="false" size="small" text="上传本地音频" variant="plain"
+				<v-btn class="text-none px-0" color="primary" :ripple="false" text="上传本地音频" variant="plain"
 					@click="uploadFileDialog = true" />
 			</div>
 		</v-responsive>
