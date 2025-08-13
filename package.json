@@ -23,7 +23,7 @@
     "pinia": "^3.0.2",
     "pinia-plugin-persistedstate": "^4.2.0",
     "roboto-fontface": "*",
-    "spacegt": "^0.1.53",
+    "spacegt": "^0.1.54",
     "uuid": "^11.1.0",
     "vue": "^3.5.13",
     "vue-aplayer-next": "^1.0.1",

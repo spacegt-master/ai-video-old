@@ -66,7 +66,14 @@ const loadVideos = async () => {
 
 onMounted(() => {
 	loadVideos()
-	setTimeout(() => GLightbox(), 300)
+	setTimeout(() => GLightbox(
+		{
+			plyr: {
+				css: '/plyr/plyr.css',
+				js: '/plyr/plyr.js'
+			}
+		}
+	), 300)
 })
 </script>
 <style></style>

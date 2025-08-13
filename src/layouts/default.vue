@@ -114,7 +114,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { nextTick, onMounted, ref } from 'vue'
 import { useDurationStore } from '@/stores/data/duration'
 import { useRouter } from 'vue-router'
 import { useAccountsStore, useAuthorizationStore } from 'spacegt'
@@ -133,7 +133,7 @@ const handleLogout = () => {
 	accountsStore.authorities = []
 	authorizationStore.token = ''
 
-	// nextTick(() => router.push('/login'))
+	nextTick(() => router.push('/login'))
 }
 
 const handleLogin = () => {

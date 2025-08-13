@@ -39,8 +39,8 @@
 
 								<v-speed-dial location="bottom center" transition="fade-transition">
 									<template v-slot:activator="{ props: activatorProps }">
-										<v-btn variant="plain" v-bind="activatorProps"
-											class="position-absolute	top-0 right-0 ma-2" size="small"
+										<v-btn variant="tonal" v-bind="activatorProps"
+											class="position-absolute top-0 right-0 ma-2" size="small"
 											icon="mdi-cog-outline"></v-btn>
 									</template>
 
