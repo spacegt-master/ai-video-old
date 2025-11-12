@@ -19,19 +19,21 @@
 				</template>
 			</v-select>
 
-			<!-- <div class="text-caption">媒体音量</div>
+			<div class="text-caption">说话速度</div>
+			<v-slider v-model="rate" show-ticks="always" :ticks="rateLabels" :tick-size="rateItems.length"
+				prepend-icon="mdi-volume-high" step="1" :min="0" :max="rateItems.length - 1"></v-slider>
 
-			<v-slider v-model="volume" prepend-icon="mdi-volume-high" :min="1.0" :max="10.0"></v-slider>
+			<div class="text-caption">媒体音量</div>
+
+			<v-slider v-model="volume" show-ticks="always" :ticks="volumeLabels" :tick-size="volumeItems.length"
+				prepend-icon="mdi-volume-high" step="1" :min="0" :max="volumeItems.length - 1"></v-slider>
 
 			<div class="text-caption">音高强度</div>
 
-			<v-slider v-model="pitch" prepend-icon="mdi-volume-high" :min="0" :max="10.0"></v-slider>
+			<v-slider v-model="pitch" show-ticks="always" :ticks="pitchLabels" :tick-size="pitchItems.length"
+				prepend-icon="mdi-volume-high" step="1" :min="0" :max="pitchItems.length - 1"></v-slider>
 
-			<div class="text-caption">说话速度</div>
-
-			<v-slider v-model="speed" prepend-icon="mdi-volume-high" :min="1.0" :max="2.0"></v-slider> -->
-
-			<v-textarea v-model="text" label="请输入文案" :loading="loading"></v-textarea>
+			<v-textarea v-model="text" class="mt-2" label="请输入文案" :loading="loading"></v-textarea>
 
 			<v-btn prepend-icon="mdi-magic-staff" :disabled="!title || !text" :loading="loading"
 				@click="onTTS()">开始合成</v-btn>
@@ -106,7 +108,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick, computed } from 'vue'
 import { AudioApi } from '@/api/audio'
 import { useAudioStore } from '@/stores/data/audio'
 import { VoicesApi } from '@/api/voices'
@@ -118,12 +120,17 @@ const emit = defineEmits(['load'])
 const loading = ref(false)
 const title = ref('')
 const text = ref('')
-const speed = ref(1.0)
-const volume = ref(1.0)
-const pitch = ref(1.0)
+const rate = ref(2)
+const rateItems = [{ value: 'x-slow', label: '超慢' }, { value: 'slow', label: '慢' }, { value: 'medium', label: '适中' }, { value: 'fast', label: '快' }, { value: 'x-fast', label: '超快' }]
+const rateLabels = computed(() => rateItems.reduce((pre, curr, currIndex) => { pre[currIndex] = curr.label; return pre; }, {}))
+const volume = ref(2)
+const volumeItems = [{ value: 'x-soft', label: '超小声' }, { value: 'soft', label: '小声' }, { value: 'medium', label: '适中' }, { value: 'loud', label: '大声' }, { value: 'x-loud', label: '超大声' }]
+const volumeLabels = computed(() => volumeItems.reduce((pre, curr, currIndex) => { pre[currIndex] = curr.label; return pre; }, {}))
+const pitch = ref(2)
+const pitchItems = [{ value: 'x-low', label: '超低音' }, { value: 'low', label: '低音' }, { value: 'medium', label: '适中' }, { value: 'high', label: '高音' }, { value: 'x-high', label: '超高音' }]
+const pitchLabels = computed(() => pitchItems.reduce((pre, curr, currIndex) => { pre[currIndex] = curr.label; return pre; }, {}))
 const selectedVoice = ref()
 const voices = ref([])
-
 
 const sourceItmes = [
 	{ value: 'Index TTS', title: 'Index TTS' },
@@ -161,13 +168,25 @@ const customForm = ref({
 const onTTS = async () => {
 	loading.value = true
 
-	const res = await VoicesApi.synthesis({ name: selectedVoice.value, text: text.value })
+	const res = await VoicesApi.synthesis({
+		name: selectedVoice.value,
+		text: text.value,
+		rate: rateItems[rate.value].value,
+		volume: volumeItems[volume.value].value,
+		pitch: pitchItems[pitch.value].value
+	})
 
 	await AudioApi.save({
 		name: title.value,
 		duration: res.duration,
 		uri: res.url,
-		config: JSON.stringify({ pitch: pitch.value, voice: selectedVoice.value, speed: speed.value, volume: volume.value, text: text.value },),
+		config: JSON.stringify({
+			voice: selectedVoice.value,
+			text: text.value,
+			rate: rateItems[rate.value].value,
+			volume: volumeItems[volume.value].value,
+			pitch: pitchItems[pitch.value].value
+		},),
 	})
 
 	await audioStore.load()

@@ -7,7 +7,13 @@ export const VoicesApi = {
     });
   },
 
-  synthesis(data: { name: string; text: string }) {
+  synthesis(data: {
+    name: string;
+    text: string;
+    rate: string;
+    pitch: string;
+    volume: string;
+  }) {
     return request({
       url: "/api/speech/synthesis",
       method: "post",
